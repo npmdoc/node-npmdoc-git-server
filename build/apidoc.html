@@ -61,12 +61,100 @@
 
     <li class="apidocModuleLi"><a href="#apidoc.module.git-server">module git-server</a><ol>
 
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.git-server.git-server">
+            function <span class="apidocSignatureSpan"></span>git-server
+            <span class="apidocSignatureSpan">(repos, logging, repoLocation, port, certs)</span>
+            </a>
+
+        </li>
+
     </ol></li>
 
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.git-server" id="apidoc.module.git-server">module git-server</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.git-server.git-server" id="apidoc.element.git-server.git-server">
+        function <span class="apidocSignatureSpan"></span>git-server
+        <span class="apidocSignatureSpan">(repos, logging, repoLocation, port, certs)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function GitServer(repos, logging, repoLocation, port, certs) {
+  var _this = this;
+  this.repos = repos != null ? repos : [];
+  this.logging = logging != null ? logging : false;
+  this.repoLocation = repoLocation != null ? repoLocation : &#x27;/tmp/repos&#x27;;
+  this.port = port != null ? port : 7000;
+  this.certs = certs;
+  this.getRepo = function(repoName) {
+    return GitServer.prototype.getRepo.apply(_this, arguments);
+  };
+  this.getUser = function(username, password, repo) {
+    return GitServer.prototype.getUser.apply(_this, arguments);
+  };
+  this.checkTriggers = function(method, repo) {
+    return GitServer.prototype.checkTriggers.apply(_this, arguments);
+  };
+  this.onPush = function(push) {
+    return GitServer.prototype.onPush.apply(_this, arguments);
+  };
+  this.onFetch = function(fetch) {
+    return GitServer.prototype.onFetch.apply(_this, arguments);
+  };
+  this.makeReposIfNull = function(callback) {
+    return GitServer.prototype.makeReposIfNull.apply(_this, arguments);
+  };
+  this.gitListeners = function() {
+    return GitServer.prototype.gitListeners.apply(_this, arguments);
+  };
+  this.permissableMethod = function(username, password, method, repo, gitObject) {
+    return GitServer.prototype.permissableMethod.apply(_this, arguments);
+  };
+  this.processSecurity = function(gitObject, method, repo) {
+    return GitServer.prototype.processSecurity.apply(_this, arguments);
+  };
+  this.log = function() {
+    return GitServer.prototype.log.apply(_this, arguments);
+  };
+  this.createRepo = function(repo, callback) {
+    return GitServer.prototype.createRepo.apply(_this, arguments);
+  };
+  this.git = pushover(this.repoLocation, {
+    autoCreate: false
+  });
+  this.permMap = {
+    fetch: &#x27;R&#x27;,
+    push: &#x27;W&#x27;
+  };
+  this.gitListeners();
+  this.makeReposIfNull(function() {
+    _this.bindEvents(function() {
+      var message, red, reset;
+      if (_this.certs != null) {
+        _this.server = https.createServer(_this.certs, _this.git.handle.bind(_this.git));
+      } else {
+        red = &#x27;\033[31m&#x27;;
+        reset = &#x27;\033[0m&#x27;;
+        message = &#x22;WARNING: No SSL certs passed in. Running as HTTP and not HTTPS.\nBe careful, without HTTPS your user/pass will
+ not be encrypted&#x22;;
+        console.log(red + message + reset);
+        _this.server = http.createServer(_this.git.handle.bind(_this.git));
+      }
+      return _this.server.listen(_this.port, function() {
+        return _this.log(&#x27;Server listening on &#x27;, _this.port, &#x27;\r&#x27;);
+      });
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 </div>
 

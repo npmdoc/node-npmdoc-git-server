@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="http://qrpike.github.io/NodeJS-Git-Server/host.coffee.html"
-
-    >git-server (v0.2.0)</a>
+    <a href="http://qrpike.github.io/NodeJS-Git-Server/host.coffee.html">git-server (v0.2.0)</a>
 </h1>
 <h4>A simple, multi-tenant git server written in NodeJS</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.git-server">module git-server</a><ol>
 
@@ -89,7 +82,7 @@
   var _this = this;
   this.repos = repos != null ? repos : [];
   this.logging = logging != null ? logging : false;
-  this.repoLocation = repoLocation != null ? repoLocation : &#x27;/tmp/repos&#x27;;
+  this.repoLocation = repoLocation != null ? repoLocation : '/tmp/repos';
   this.port = port != null ? port : 7000;
   this.certs = certs;
   this.getRepo = function(repoName) {
@@ -129,8 +122,8 @@
     autoCreate: false
   });
   this.permMap = {
-    fetch: &#x27;R&#x27;,
-    push: &#x27;W&#x27;
+    fetch: 'R',
+    push: 'W'
   };
   this.gitListeners();
   this.makeReposIfNull(function() {
@@ -139,15 +132,15 @@
       if (_this.certs != null) {
         _this.server = https.createServer(_this.certs, _this.git.handle.bind(_this.git));
       } else {
-        red = &#x27;\033[31m&#x27;;
-        reset = &#x27;\033[0m&#x27;;
-        message = &#x22;WARNING: No SSL certs passed in. Running as HTTP and not HTTPS.\nBe careful, without HTTPS your user/pass will
- not be encrypted&#x22;;
+        red = '\033[31m';
+        reset = '\033[0m';
+        message = "WARNING: No SSL certs passed in. Running as HTTP and not HTTPS.\nBe careful, without HTTPS your user/pass will
+ not be encrypted";
         console.log(red + message + reset);
         _this.server = http.createServer(_this.git.handle.bind(_this.git));
       }
       return _this.server.listen(_this.port, function() {
-        return _this.log(&#x27;Server listening on &#x27;, _this.port, &#x27;\r&#x27;);
+        return _this.log('Server listening on ', _this.port, '\r');
       });
     });
   });
@@ -164,3 +157,4 @@
     ]
 </div>
 </div>
+</body></html>
