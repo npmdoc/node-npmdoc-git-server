@@ -1,6 +1,6 @@
 # npmdoc-git-server
 
-#### api documentation for  [git-server (v0.2.0)](http://qrpike.github.io/NodeJS-Git-Server/host.coffee.html)  [![npm package](https://img.shields.io/npm/v/npmdoc-git-server.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-git-server) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-git-server.svg)](https://travis-ci.org/npmdoc/node-npmdoc-git-server)
+#### basic api documentation for  [git-server (v0.2.0)](http://qrpike.github.io/NodeJS-Git-Server/host.coffee.html)  [![npm package](https://img.shields.io/npm/v/npmdoc-git-server.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-git-server) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-git-server.svg)](https://travis-ci.org/npmdoc/node-npmdoc-git-server)
 
 #### A simple, multi-tenant git server written in NodeJS
 
